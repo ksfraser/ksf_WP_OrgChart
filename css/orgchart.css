@@ -1,0 +1,470 @@
+/**
+ * KSF OrgChart Styles
+ * WordPress ESS Adapter - Org Chart Viewer
+ */
+
+.ksf-orgchart-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.ksf-orgchart-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.ksf-orgchart-search {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.ksf-orgchart-search label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.ksf-orgchart-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.ksf-orgchart-search-input:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34,113,177,0.2);
+}
+
+.ksf-orgchart-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.ksf-orgchart-search-results.show {
+    display: block;
+}
+
+.search-result-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: #f0f0f0;
+}
+
+.search-result-item .result-name {
+    display: block;
+    font-weight: 600;
+    color: #333;
+}
+
+.search-result-item .result-title {
+    display: block;
+    font-size: 12px;
+    color: #666;
+}
+
+.search-no-results,
+.search-error {
+    padding: 10px 12px;
+    color: #666;
+    font-size: 13px;
+}
+
+.ksf-orgchart-levels {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.ksf-orgchart-level-control {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ksf-orgchart-level-control label {
+    font-size: 12px;
+    color: #555;
+}
+
+.ksf-orgchart-levels-input {
+    width: 60px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.ksf-orgchart-context-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding: 12px;
+    background: #e9eff5;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.ksf-orgchart-context-toggle label {
+    font-weight: 600;
+    color: #333;
+}
+
+.ksf-orgchart-context-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.ksf-orgchart-context-btn {
+    padding: 8px 16px;
+    border: 1px solid #2271b1;
+    background: #fff;
+    color: #2271b1;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.ksf-orgchart-context-btn:hover {
+    background: #f0f0f0;
+}
+
+.ksf-orgchart-context-btn.active {
+    background: #2271b1;
+    color: #fff;
+}
+
+.ksf-orgchart-context-project {
+    margin-left: auto;
+}
+
+.ksf-orgchart-project-select {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+    font-size: 13px;
+}
+
+.ksf-orgchart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+.ksf-orgchart-svg-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.ksf-orgchart-svg {
+    display: block;
+    cursor: grab;
+    transform-origin: center center;
+}
+
+.ksf-orgchart-svg:active {
+    cursor: grabbing;
+}
+
+.ksf-orgchart-nodes {
+    fill: none;
+}
+
+.ksf-orgchart-node-bg {
+    fill: #fff;
+    stroke: #2271b1;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.ksf-orgchart-node:hover .ksf-orgchart-node-bg {
+    fill: #f0f7ff;
+}
+
+.ksf-orgchart-node-name {
+    fill: #333;
+    font-size: 14px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.ksf-orgchart-node-title {
+    fill: #555;
+    font-size: 11px;
+    pointer-events: none;
+}
+
+.ksf-orgchart-node-dept {
+    fill: #777;
+    font-size: 10px;
+    pointer-events: none;
+}
+
+.ksf-orgchart-connector {
+    fill: none;
+    stroke: #666;
+    stroke-width: 2;
+}
+
+.ksf-orgchart-zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.ksf-orgchart-zoom-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.ksf-orgchart-zoom-btn:hover {
+    background: #f0f0f0;
+}
+
+.ksf-orgchart-employee-popup {
+    position: fixed;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    z-index: 1000;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.ksf-orgchart-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+}
+
+.ksf-orgchart-popup-close:hover {
+    color: #333;
+}
+
+.ksf-orgchart-employee-popup h3 {
+    margin: 0 0 15px 0;
+    color: #2271b1;
+    font-size: 16px;
+}
+
+.ksf-orgchart-employee-popup p {
+    margin: 8px 0;
+    font-size: 13px;
+    color: #333;
+}
+
+.ksf-orgchart-employee-popup strong {
+    color: #555;
+}
+
+/* FA Adapter Styles */
+.ksf-facrm-org-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.ksf-facrm-org-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ksf-facrm-org-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.ksf-facrm-org-context {
+    display: flex;
+    gap: 10px;
+}
+
+.ksf-facrm-org-context-btn {
+    padding: 6px 12px;
+    border: 1px solid #36b;
+    background: #fff;
+    color: #36b;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.ksf-facrm-org-context-btn.active {
+    background: #36b;
+    color: #fff;
+}
+
+.org-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.org-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.org-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.card-type {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    font-weight: 600;
+}
+
+.badge-role {
+    background: #36b;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+.org-card-salesman .org-card-header {
+    background: #e8f4fd;
+    border-bottom-color: #b8daff;
+}
+
+.org-card-warranty .org-card-header {
+    background: #fff3e0;
+    border-bottom-color: #ffe0b2;
+}
+
+.org-card-project .org-card-header {
+    background: #e8f5e9;
+    border-bottom-color: #c8e6c9;
+}
+
+.org-card-body {
+    padding: 15px;
+}
+
+.card-name {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.org-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 15px;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #555;
+}
+
+.card-email,
+.card-phone {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ksf-orgchart-toolbar {
+        flex-direction: column;
+    }
+
+    .ksf-orgchart-levels {
+        flex-wrap: wrap;
+    }
+
+    .ksf-orgchart-context-toggle {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .org-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}

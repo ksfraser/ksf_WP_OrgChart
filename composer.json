@@ -4,12 +4,12 @@
     "type": "library",
     "license": "GPL-3.0",
     "require": {
-        "php": "^7.3",
+        "php": ">=7.4",
         "ksfraser/ksf-orgchart": "*",
         "ksfraser/ksf-hrm": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
